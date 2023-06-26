@@ -31,3 +31,24 @@ df_freq_table = pd.DataFrame({'Animal': freq_table.index, 'Count': freq_table.va
 # Создаем тепловую карту на основе таблицы частотности
 sns.heatmap(df_freq_table.pivot(index='Animal', columns='Count', values='Count'), annot=True, cmap='YlGnBu')
 
+# круговая диаграмма
+import matplotlib.pyplot as plt
+
+# данные выборки
+classes = ['красный', 'зеленый', 'синий']
+counts = [10, 20, 20]
+
+# вычисление долей для каждого класса
+total = sum(counts)
+percentages = [(count / total) * 100 for count in counts]
+
+# построение круговой диаграммы
+fig, ax = plt.subplots()
+ax.pie(percentages, labels=classes, autopct='%1.1f%%')
+ax.axis('equal')
+
+# добавление легенды
+plt.legend(title='Классы', loc='best')
+
+# отображение диаграммы
+plt.show()
